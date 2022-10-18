@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "599594300310",
+    "project_id": "fir-didong",
+    "storage_bucket": "fir-didong.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599594300310:android:b57d84108a30c8cf49e3b7",
+        "android_client_info": {
+          "package_name": "com.example.do_an"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599594300310-i10c9ms60p3a0u77tmmejh6ieoh7cpf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDabKj5ryKYhbU0gHiHutJuivlbuptHU8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599594300310-i10c9ms60p3a0u77tmmejh6ieoh7cpf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

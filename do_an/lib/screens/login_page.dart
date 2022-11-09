@@ -1,4 +1,5 @@
 import 'package:do_an/screens/forgot_password_page.dart';
+import 'package:do_an/screens/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -209,10 +210,10 @@ class _LoginPageState extends State<LoginPage> {
           Container(
             child: TextButton(
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const SignupPage()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Register()),
+                );
               },
               child: Text(
                 'Sign up',

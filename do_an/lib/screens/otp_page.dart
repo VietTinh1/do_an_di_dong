@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:do_an/main.dart';
 import 'package:do_an/screens/google_sig_in.dart';
-import 'package:do_an/utilities/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:do_an/screens/forgot_password_page.dart';
 import 'package:email_auth/email_auth.dart';
@@ -123,12 +122,25 @@ class _OTPpage extends State<OTPpage> {
       children: <Widget>[
         Text(
           '',
-          style: kLabelStyle,
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
+          decoration: BoxDecoration(
+            color: Color(0xFF6CA8F1),
+            borderRadius: BorderRadius.circular(10.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 6.0,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
           height: 60.0,
           child: TextField(
             controller: txtOTP,
@@ -140,7 +152,10 @@ class _OTPpage extends State<OTPpage> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 5.0, left: 15),
               hintText: 'Enter Your OTP',
-              hintStyle: kHintTextStyle,
+              hintStyle: TextStyle(
+                color: Colors.white54,
+                fontFamily: 'OpenSans',
+              ),
             ),
           ),
         ),
@@ -180,7 +195,7 @@ class _OTPpage extends State<OTPpage> {
             child: Text(
               'OTP not received ?',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 18.0,
                 fontWeight: FontWeight.w400,
               ),
@@ -223,7 +238,7 @@ class _OTPpage extends State<OTPpage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFF73AEF5),
+                      Color.fromARGB(0, 197, 197, 200),
                       Color(0xFF61A4F1),
                       Color(0xFF478DE0),
                       Color(0xFF398AE5),
@@ -238,7 +253,7 @@ class _OTPpage extends State<OTPpage> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 120.0,
+                    vertical: 160.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -246,7 +261,7 @@ class _OTPpage extends State<OTPpage> {
                       Text(
                         ' Enter OTP',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,
                         ),

@@ -1,3 +1,4 @@
+import 'package:do_an/screens/choosefield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,7 +35,11 @@ class _HomeMainState extends State<HomeMain> {
       padding: EdgeInsets.symmetric(vertical: 15.0),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+                  context, MaterialPageRoute(
+                    builder: (context) => ChooseFieldPage()));
+        },
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
           primary: Colors.white,
@@ -123,7 +128,7 @@ class _HomeMainState extends State<HomeMain> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFF73AEF5),
+                      Color.fromARGB(0, 197, 197, 200),
                       Color(0xFF61A4F1),
                       Color(0xFF478DE0),
                       Color(0xFF398AE5),

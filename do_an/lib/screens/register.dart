@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:do_an/main.dart';
 import 'package:do_an/screens/google_sig_in.dart';
-import 'package:do_an/utilities/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_auth/email_auth.dart';
@@ -64,9 +63,9 @@ class _RegisterState extends State<Register> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => OTPpage(
-                                    email: emailController.text,
-                                    name:nameController.text,pass:_passController.text
-                                  )),
+                                  email: emailController.text,
+                                  name: nameController.text,
+                                  pass: _passController.text)),
                         );
                       },
                       child: Text('OK'))
@@ -77,7 +76,6 @@ class _RegisterState extends State<Register> {
       print("Khong gui dc OTP");
   }
 
-
 // Kiểm tra email có đăng kí chưa
   Future checkIfEmailInUse(String emailAddress) async {
     result =
@@ -86,12 +84,14 @@ class _RegisterState extends State<Register> {
     if (result.toString() != '[password]') {
       SendOTP();
     } else
-       showSnackBar('Email already exists! Please choose another email');
+      showSnackBar('Email already exists! Please choose another email');
   }
+
   void showSnackBar(String x) {
     final snackBar = SnackBar(content: Text(x));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
+
   bool IsSamePassword() {
     if (_passController.text == _confirmpasscontroller.text)
       return true;
@@ -141,7 +141,7 @@ class _RegisterState extends State<Register> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFF73AEF5),
+                      Color.fromARGB(0, 197, 197, 200),
                       Color(0xFF61A4F1),
                       Color(0xFF478DE0),
                       Color(0xFF398AE5),
@@ -164,7 +164,7 @@ class _RegisterState extends State<Register> {
                       Text(
                         'Register',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -175,7 +175,7 @@ class _RegisterState extends State<Register> {
                           Text(
                             'Email',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'OpenSans',
                             ),
@@ -229,7 +229,7 @@ class _RegisterState extends State<Register> {
                           Text(
                             'Username',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'OpenSans',
                             ),
@@ -252,7 +252,7 @@ class _RegisterState extends State<Register> {
                             child: TextField(
                               controller: nameController,
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -279,7 +279,7 @@ class _RegisterState extends State<Register> {
                           Text(
                             'Password',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'OpenSans',
                             ),
@@ -304,7 +304,7 @@ class _RegisterState extends State<Register> {
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: _obscured,
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -347,7 +347,7 @@ class _RegisterState extends State<Register> {
                           Text(
                             'ConfirmPassword',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'OpenSans',
                             ),

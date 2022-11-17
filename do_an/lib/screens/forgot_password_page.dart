@@ -1,4 +1,3 @@
-
 import 'package:do_an/screens/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:do_an/main.dart';
 import 'package:do_an/screens/google_sig_in.dart';
-import 'package:do_an/utilities/constants.dart';
 import 'package:provider/provider.dart';
-
 
 //0306191444@caothang.edu.vn
 
@@ -24,45 +21,61 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
     _txtemail.dispose();
     super.dispose();
   }
+
   Future resetPassword() async {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _txtemail.text.trim());
-          showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-            content: Text('Password reset link has sent! Please check your email'),
-            actions: [
-              TextButton(onPressed: (){
-                    Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => LoginPage()),
-          );
-              }, child: Text('OK'))
-            ],
-        ));
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                content: Text(
+                    'Password reset link has sent! Please check your email'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      },
+                      child: Text('OK'))
+                ],
+              ));
     } on FirebaseAuthMultiFactorException catch (e) {
-  showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-            
-            content: Text(e.message.toString()),
-        ));
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                content: Text(e.message.toString()),
+              ));
     }
   }
+
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
           'Email',
-          style: kLabelStyle,
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
+          decoration: BoxDecoration(
+            color: Color(0xFF6CA8F1),
+            borderRadius: BorderRadius.circular(10.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 6.0,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
           height: 60.0,
           child: TextField(
             controller: _txtemail,
@@ -78,7 +91,9 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                 color: Colors.white,
               ),
               hintText: 'Enter your Email',
-              hintStyle: kHintTextStyle,
+              hintStyle: TextStyle(
+                color: Colors.white54,
+              ),
             ),
           ),
         ),
@@ -92,7 +107,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-           resetPassword();
+          resetPassword();
         },
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
@@ -124,7 +139,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFF73AEF5),
+                      Color.fromARGB(0, 197, 197, 200),
                       Color(0xFF61A4F1),
                       Color(0xFF478DE0),
                       Color(0xFF398AE5),
@@ -139,7 +154,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 120.0,
+                    vertical: 160.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -147,7 +162,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                       Text(
                         'Verification',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,
                         ),

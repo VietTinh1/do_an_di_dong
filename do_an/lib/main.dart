@@ -5,7 +5,8 @@ import 'package:do_an/screens/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:do_an/screens/home_page.dart';
 import 'package:provider/provider.dart';
-
+import 'package:do_an/screens/choosefield.dart';
+import 'package:do_an/screens/display_page.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

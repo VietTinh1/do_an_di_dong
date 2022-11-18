@@ -39,11 +39,13 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text('Email',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            )),
+        Text(
+          'Email',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -88,11 +90,13 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text('Password',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            )),
+        Text(
+          'Password',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,

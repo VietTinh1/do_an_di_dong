@@ -16,24 +16,31 @@ class OTPpage extends StatefulWidget {
   final String email;
   final String name;
   final String pass;
-
+  final String img;
+  final String uid;
   OTPpage({
     required this.email,
     required this.name,
     required this.pass,
+    required this.img,
+    required this.uid,
   });
-  _OTPpage createState() => _OTPpage(email1: email, name1: name, pass1: pass);
+  _OTPpage createState() =>
+      _OTPpage(email1: email, name1: name, pass1: pass, img1: img, uid1: uid);
 }
 
 class _OTPpage extends State<OTPpage> {
   final String email1;
   final String name1;
   final String pass1;
-
+  final String img1;
+  final String uid1;
   _OTPpage({
     required this.email1,
     required this.name1,
     required this.pass1,
+    required this.img1,
+    required this.uid1,
   });
   final TextEditingController txtOTP = TextEditingController();
   final textFieldFocusNode = FocusNode();
@@ -98,21 +105,19 @@ class _OTPpage extends State<OTPpage> {
   }
 
   Future signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
       email: email1,
       password: pass1,
-    );
-    // add user details
-    addUserDetails(
-      email1,
-      name1,
-    );
-  }
-
-  Future addUserDetails(String email, String name) async {
-    await FirebaseFirestore.instance.collection('users').add({
-      'email': email,
-      'name': name,
+    )
+        //id
+        .then((value) {
+      FirebaseFirestore.instance.collection("users").doc(value.user!.uid).set({
+        "name": name1.trim(),
+        "email": email1.trim(),
+        "img": "",
+        "uid": value.user!.uid,
+      });
     });
   }
 
@@ -253,7 +258,7 @@ class _OTPpage extends State<OTPpage> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 160.0,
+                    vertical: 120.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

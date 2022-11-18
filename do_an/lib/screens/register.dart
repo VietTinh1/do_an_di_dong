@@ -22,6 +22,8 @@ class _RegisterState extends State<Register> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final _passController = TextEditingController();
+  final _img = TextEditingController();
+  final _uid = TextEditingController();
   var result;
   static bool error = false;
   final _confirmpasscontroller = TextEditingController();
@@ -33,6 +35,8 @@ class _RegisterState extends State<Register> {
     nameController.dispose();
     _passController.dispose();
     _confirmpasscontroller.dispose();
+    _img.dispose();
+    _uid.dispose();
     super.dispose();
   }
 
@@ -62,10 +66,14 @@ class _RegisterState extends State<Register> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => OTPpage(
-                                  email: emailController.text,
-                                  name: nameController.text,
-                                  pass: _passController.text)),
+                            builder: (context) => OTPpage(
+                              email: emailController.text,
+                              name: nameController.text,
+                              pass: _passController.text,
+                              img: _img.text,
+                              uid: _uid.text,
+                            ),
+                          ),
                         );
                       },
                       child: Text('OK'))

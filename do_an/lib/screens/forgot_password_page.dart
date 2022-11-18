@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:do_an/main.dart';
 import 'package:do_an/screens/google_sig_in.dart';
+
 import 'package:provider/provider.dart';
 
 //0306191444@caothang.edu.vn
@@ -154,7 +155,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 160.0,
+                    vertical: 120.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

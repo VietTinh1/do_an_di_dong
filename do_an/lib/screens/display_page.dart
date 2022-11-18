@@ -13,24 +13,25 @@ class DisplayPage extends StatefulWidget {
 }
 
 class _DisplayPageState extends State<DisplayPage> {
-
   //hide/show password
 
-  Widget _namePoint (){
+  Widget _namePoint() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TextButton(
           onPressed: () {},
-         child: Text('Tên: Nguyễn Hồ Minh Tài', 
-         style: TextStyle(color: Colors.black,fontSize: 18),
-         ),
+          child: Text(
+            'Tên: Nguyễn Hồ Minh Tài',
+            style: TextStyle(color: Colors.black, fontSize: 18),
+          ),
         ),
         TextButton(
           onPressed: () {},
-         child: Text('Điểm: 10', 
-         style: TextStyle(color: Colors.black,fontSize: 18),
-         ),
+          child: Text(
+            'Điểm: 10',
+            style: TextStyle(color: Colors.black, fontSize: 18),
+          ),
         ),
       ],
     );
@@ -52,7 +53,6 @@ class _DisplayPageState extends State<DisplayPage> {
         child: Text(
           "Con mèo có mấy chân",
           style: TextStyle(color: Colors.black, fontSize: 18),
-          
         ),
       ),
     );
@@ -151,7 +151,7 @@ class _DisplayPageState extends State<DisplayPage> {
           icon: Icon(Icons.phone_enabled_outlined),
           onPressed: () {},
         ),
-        
+
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(10),
@@ -161,26 +161,19 @@ class _DisplayPageState extends State<DisplayPage> {
         title: IconButton(
           iconSize: 40.0,
           icon: Icon(Icons.change_circle_rounded),
-          onPressed: () {
-            
-          },
+          onPressed: () {},
         ),
         // centerTitle: true,
         actions: <Widget>[
           IconButton(
-           iconSize: 40.0,
-           icon: Icon(Icons.people_outline_outlined),
-           onPressed: () {
-
-           },
+            iconSize: 40.0,
+            icon: Icon(Icons.people_outline_outlined),
+            onPressed: () {},
           ),
-          
           IconButton(
             iconSize: 40.0,
             icon: Icon(Icons.back_hand_outlined),
-            onPressed: () {
-
-            },
+            onPressed: () {},
           ),
         ],
         flexibleSpace: SafeArea(
@@ -222,11 +215,14 @@ class _DisplayPageState extends State<DisplayPage> {
                     horizontal: 35.0,
                     vertical: 35.0,
                   ),
-                  
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset('img/HA2.jpg',width: 150, height: 150,),
+                      Image.asset(
+                        'img/HA2.jpg',
+                        width: 150,
+                        height: 150,
+                      ),
                       // Text(
                       //   'Triệu Phú Mobile',
                       //   style: TextStyle(
@@ -243,7 +239,7 @@ class _DisplayPageState extends State<DisplayPage> {
                       _questionText(),
                       _questionA(),
                       _questionB(),
-                      _questionC(), 
+                      _questionC(),
                       _questionD(),
                       // SizedBox(
                       //   height: 10.0,

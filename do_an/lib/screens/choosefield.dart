@@ -14,24 +14,25 @@ class ChooseFieldPage extends StatefulWidget {
 }
 
 class _ChooseFieldState extends State<ChooseFieldPage> {
-
   //hide/show password
 
-  Widget _namePoint (){
+  Widget _namePoint() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TextButton(
           onPressed: () {},
-         child: Text('Tên: Nguyễn Hồ Minh Tài', 
-         style: TextStyle(color: Colors.black,fontSize: 18),
-         ),
+          child: Text(
+            'Tên: Nguyễn Hồ Minh Tài',
+            style: TextStyle(color: Colors.black, fontSize: 18),
+          ),
         ),
         TextButton(
           onPressed: () {},
-         child: Text('Điểm: 10', 
-         style: TextStyle(color: Color.fromARGB(255, 0, 0, 0),fontSize: 18),
-         ),
+          child: Text(
+            'Điểm: 10',
+            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 18),
+          ),
         ),
       ],
     );
@@ -44,8 +45,7 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (context) => DisplayPage()));
+              context, MaterialPageRoute(builder: (context) => DisplayPage()));
         },
         style: ElevatedButton.styleFrom(
           elevation: 20,
@@ -57,7 +57,6 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
         child: Text(
           "Môn Toán",
           style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 18),
-          
         ),
       ),
     );
@@ -70,8 +69,7 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (context) => DisplayPage()));
+              context, MaterialPageRoute(builder: (context) => DisplayPage()));
         },
         style: ElevatedButton.styleFrom(
           elevation: 20,
@@ -95,8 +93,7 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (context) => DisplayPage()));
+              context, MaterialPageRoute(builder: (context) => DisplayPage()));
         },
         style: ElevatedButton.styleFrom(
           elevation: 20,
@@ -120,8 +117,7 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (context) => DisplayPage()));
+              context, MaterialPageRoute(builder: (context) => DisplayPage()));
         },
         style: ElevatedButton.styleFrom(
           elevation: 20,
@@ -145,8 +141,7 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (context) => DisplayPage()));
+              context, MaterialPageRoute(builder: (context) => DisplayPage()));
         },
         style: ElevatedButton.styleFrom(
           elevation: 20,
@@ -170,8 +165,7 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
-                  context, MaterialPageRoute(
-                    builder: (context) => DisplayPage()));
+              context, MaterialPageRoute(builder: (context) => DisplayPage()));
         },
         style: ElevatedButton.styleFrom(
           elevation: 20,
@@ -187,7 +181,6 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +216,6 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
                     horizontal: 35.0,
                     vertical: 120.0,
                   ),
-                  
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -244,7 +236,7 @@ class _ChooseFieldState extends State<ChooseFieldPage> {
                       _questionToan(),
                       _questionVan(),
                       _questionAnh(),
-                      _questionLy(), 
+                      _questionLy(),
                       _questionHoa(),
                       _questionLichSu()
                     ],

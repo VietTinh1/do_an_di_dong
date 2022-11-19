@@ -19,11 +19,11 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   bool _pass = true;
-  bool _passNew = true;
-  bool _passConfirm = true;
+
   String name = "";
   String imageUrl = "";
-
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
   final user = FirebaseAuth.instance.currentUser!;
 
   //hide/show password
@@ -34,18 +34,20 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  @override
-  void _showPassNew() {
-    setState(() {
-      _passNew = !_passNew;
+  //update
+  void updateProfile() {
+    final docUser =
+        FirebaseFirestore.instance.collection("users").doc(user.uid);
+    docUser.update({
+      'name': nameController.text.trim(),
+      'email': user.email,
+      'img': imageUrl
     });
-  }
-
-  @override
-  void _showPassConfirm() {
-    setState(() {
-      _passConfirm = !_passConfirm;
-    });
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: Colors.black26,
+      content: Text('You profile has been Changed... Home Again'),
+    ));
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 
   //Get data
@@ -58,8 +60,17 @@ class _ProfileState extends State<Profile> {
       if (snapshot.exists) {
         setState(() {
           name = snapshot.data()!["name"];
+          imageUrl = snapshot.data()!["img"];
         });
       }
+    });
+  }
+
+  @override
+  void initState() {
+    setState(() {
+      super.initState();
+      _getDaTa();
     });
   }
 
@@ -85,14 +96,6 @@ class _ProfileState extends State<Profile> {
         });
       });
     } catch (error) {}
-  }
-
-  @override
-  void initState() {
-    setState(() {
-      super.initState();
-      _getDaTa();
-    });
   }
 
   Widget _btnCancel() {
@@ -121,7 +124,9 @@ class _ProfileState extends State<Profile> {
 
   Widget _btnSave() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        updateProfile();
+      },
       style: ElevatedButton.styleFrom(
         primary: Colors.blue,
         padding: EdgeInsets.symmetric(horizontal: 50),
@@ -145,6 +150,7 @@ class _ProfileState extends State<Profile> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 30.0),
       child: TextField(
+        controller: nameController,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(bottom: 3),
           labelText: "NAME",
@@ -165,6 +171,7 @@ class _ProfileState extends State<Profile> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 30.0),
       child: TextField(
+        controller: emailController,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(bottom: 3),
@@ -222,7 +229,7 @@ class _ProfileState extends State<Profile> {
               Container(
                 alignment: Alignment.center,
                 child: Text(
-                  name,
+                  user.displayName ?? name,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
                 ),
               ),
@@ -242,17 +249,23 @@ class _ProfileState extends State<Profile> {
                                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv7KGGABqmk2fkHBntlRDBBt8zjCpAKLVGaQ&usqp=CAU"),
                             ),
                           )
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: CircleAvatar(
-                              radius: 60,
-                              backgroundColor: Colors.transparent,
-                              child: CircleAvatar(
-                                radius: 58,
-                                backgroundImage: NetworkImage(imageUrl),
+                        : imageUrl.contains('http')
+                            ? CircleAvatar(
+                                radius: 60,
+                                backgroundColor: Colors.transparent,
+                                child: CircleAvatar(
+                                  radius: 58,
+                                  backgroundImage: NetworkImage(imageUrl),
+                                ),
+                              )
+                            : CircleAvatar(
+                                radius: 60,
+                                backgroundColor: Colors.transparent,
+                                child: CircleAvatar(
+                                  radius: 58,
+                                  backgroundImage: FileImage(File(imageUrl)),
+                                ),
                               ),
-                            ),
-                          ),
                     Positioned(
                       bottom: 0,
                       right: 0,

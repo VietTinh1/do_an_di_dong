@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:do_an/main.dart';
 import 'package:do_an/screens/choosefield.dart';
 import 'package:do_an/screens/profile.dart';
@@ -13,6 +16,31 @@ class HomeMain extends StatefulWidget {
 }
 
 class _HomeMainState extends State<HomeMain> {
+  final user = FirebaseAuth.instance.currentUser!;
+  String name = "";
+  String imageUrl = "";
+  //Get data
+  Future _getDaTa() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((snapshot) async {
+      if (snapshot.exists) {
+        setState(() {
+          name = snapshot.data()!["name"];
+          imageUrl = snapshot.data()!["img"];
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getDaTa();
+  }
+
   Widget _account() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -120,7 +148,7 @@ class _HomeMainState extends State<HomeMain> {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -156,15 +184,42 @@ class _HomeMainState extends State<HomeMain> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircleAvatar(
-                          radius: 60,
-                          backgroundColor: Color.fromARGB(179, 141, 81, 81),
-                          child: CircleAvatar(
-                            radius: 58,
-                            backgroundImage: NetworkImage(
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv7KGGABqmk2fkHBntlRDBBt8zjCpAKLVGaQ&usqp=CAU"),
-                          )),
-                      Text(user.email!,
+                      Center(
+                        child: Stack(
+                          children: [
+                            imageUrl == ""
+                                ? const CircleAvatar(
+                                    radius: 60,
+                                    backgroundColor: Colors.transparent,
+                                    child: CircleAvatar(
+                                      radius: 58,
+                                      backgroundImage: NetworkImage(
+                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv7KGGABqmk2fkHBntlRDBBt8zjCpAKLVGaQ&usqp=CAU"),
+                                    ),
+                                  )
+                                : imageUrl.contains('http')
+                                    ? CircleAvatar(
+                                        radius: 60,
+                                        backgroundColor: Colors.transparent,
+                                        child: CircleAvatar(
+                                          radius: 58,
+                                          backgroundImage:
+                                              NetworkImage(imageUrl),
+                                        ),
+                                      )
+                                    : CircleAvatar(
+                                        radius: 60,
+                                        backgroundColor: Colors.transparent,
+                                        child: CircleAvatar(
+                                          radius: 58,
+                                          backgroundImage:
+                                              FileImage(File(imageUrl)),
+                                        ),
+                                      ),
+                          ],
+                        ),
+                      ),
+                      Text(user!.displayName ?? name,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,

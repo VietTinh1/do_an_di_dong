@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:do_an/main.dart';
 import 'package:do_an/screens/choosefield.dart';
+import 'package:do_an/screens/history.dart';
 import 'package:do_an/screens/profile.dart';
+import 'package:do_an/screens/rankchoose.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -94,7 +96,12 @@ class _HomeMainState extends State<HomeMain> {
       padding: EdgeInsets.symmetric(vertical: 15.0),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+                    Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HistoryPage()),
+          );
+        },
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
           primary: Colors.white,
@@ -113,7 +120,12 @@ class _HomeMainState extends State<HomeMain> {
       padding: EdgeInsets.symmetric(vertical: 15.0),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+                    Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RankChoosePage()),
+          );
+        },
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
           primary: Colors.white,
